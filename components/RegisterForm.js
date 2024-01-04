@@ -76,7 +76,10 @@ const RegisterForm = () => {
             id="fullName"
             placeholder="Full Name"
             autoComplete="userName"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              setError("");
+            }}
           />
           <input
             type="email"
@@ -84,7 +87,10 @@ const RegisterForm = () => {
             id="email"
             placeholder="Email"
             autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError("");
+            }}
           />
           <input
             type="password"
@@ -92,7 +98,10 @@ const RegisterForm = () => {
             id="password"
             placeholder="Password"
             autoComplete="new-password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
           />
 
           <button className="bg-green-600 text-white font-bold cursor-pointer px-6 py-2">
