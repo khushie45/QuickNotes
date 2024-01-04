@@ -8,5 +8,6 @@ export const POST = async (req) => {
     return NextResponse.json({ user });
   } catch (error) {
     console.log(error);
+    return NextResponse.json({ message: error });
   }
 };

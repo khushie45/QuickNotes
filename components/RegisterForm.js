@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -75,6 +75,7 @@ const RegisterForm = () => {
             name="fullName"
             id="fullName"
             placeholder="Full Name"
+            autoComplete="userName"
             onChange={(e) => setName(e.target.value)}
           />
           <input
@@ -82,6 +83,7 @@ const RegisterForm = () => {
             name="email"
             id="email"
             placeholder="Email"
+            autoComplete="email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
@@ -89,6 +91,7 @@ const RegisterForm = () => {
             name="password"
             id="password"
             placeholder="Password"
+            autoComplete="new-password"
             onChange={(e) => setPassword(e.target.value)}
           />
 
