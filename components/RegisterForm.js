@@ -68,7 +68,7 @@ const RegisterForm = () => {
   return (
     <div className="grid place-items-center h-[90vh]">
       <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
-        <h1 className="text-x; font-bold my-4">Register</h1>
+        <h1 className="font-bold my-4">Register</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="text"
