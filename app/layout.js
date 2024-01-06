@@ -2,12 +2,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./Providers";
 import Navbar from "@/components/Navbar";
+import { NotesProvider } from "@/context/NotesContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PixelPeak",
-  description: "PixelPeak, a social media platform.",
+  title: "Quick Notes",
+  description: "Simple note-taking app with user authentication.",
 };
 
 export default function RootLayout({ children }) {
@@ -15,8 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Navbar />
-          {children}
+          <NotesProvider>
+            <Navbar />
+            {children}
+          </NotesProvider>
         </AuthProvider>
       </body>
     </html>

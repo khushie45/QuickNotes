@@ -1,7 +1,13 @@
-import UserInfo from "@/components/UserInfo";
+import AddNote from "@/components/AddNote";
+import NotesList from "@/components/NotesList";
 
 const Dashboard = () => {
-  return <UserInfo />;
+  return (
+    <>
+      <AddNote />
+      <NotesList />
+    </>
+  );
 };
 
 export default Dashboard;

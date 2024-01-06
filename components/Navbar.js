@@ -17,7 +17,7 @@ const Navbar = () => {
         </nav>
       )}
 
-      {pathName === "/dashboard" && (
+      {pathName.startsWith("/dashboard") && (
         <nav className="flex justify-between items-center gap-4 p-4 bg-green-600 text-white font-bold">
           <p>Welcome {session?.user?.name}</p>
           <button onClick={() => signOut()}>Log Out</button>
