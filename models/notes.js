@@ -10,6 +10,11 @@ const NoteSchema = new Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

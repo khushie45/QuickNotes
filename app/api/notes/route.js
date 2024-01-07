@@ -1,10 +1,14 @@
 import Note from "@/models/notes";
 import { NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
 export const POST = async (req) => {
   const { title, description } = await req.json();
+  const session = await getServerSession(authOptions);
+  const userEmail = session?.user?.email;
 
-  await Note.create({ title, description });
+  await Note.create({ title, description, email: userEmail });
 
   return NextResponse.json(
     { message: "Note added successfully" },
@@ -12,14 +16,16 @@ export const POST = async (req) => {
   );
 };
 
-export const GET = async (req) => {
-  const id = req.nextUrl.searchParams.get("id");
-  if (id) {
-    const note = await Note.findOne({ _id: id });
-    return NextResponse.json({ note }, { status: 200 });
-  } else {
-    const notes = await Note.find();
+export const GET = async () => {
+  try {
+    const session = await getServerSession(authOptions);
+    const userEmail = session?.user?.email;
+
+    const notes = await Note.find({ email: userEmail });
     return NextResponse.json({ notes });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ error }, { status: 500 });
   }
 };
 

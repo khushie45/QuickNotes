@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useNotes } from "@/context/NotesContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
 
   const router = useRouter();
+  const { fetchNotes } = useNotes();
   const handleCredentialSignIn = async (e) => {
     e.preventDefault();
 
@@ -28,15 +30,17 @@ const LoginForm = () => {
       }
 
       router.replace("dashboard");
+      await fetchNotes();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleGoogleSignIn = (e) => {
+  const handleGoogleSignIn = async(e) => {
     e.preventDefault();
     signIn("google");
     router.replace("dashboard");
+    await fetchNotes();
   };
 
   return (
