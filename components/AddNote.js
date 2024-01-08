@@ -60,14 +60,14 @@ const AddNote = () => {
       </button>
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-md">
           <div className="rounded-lg shadow-lg p-4 border-2 border-green-600">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-3 mx-10 mt-4"
+              className="flex flex-col gap-3 mx-2 mt-2 md:mx-10 md:mt-4"
             >
               <div className="flex items-center justify-between">
-                <p className="text-lg">Add title and description:</p>
+                <p className="text-lg font-bold">Add title and description:</p>
                 <button onClick={closeModal}>
                   <RxCross2 size={22} />
                 </button>
