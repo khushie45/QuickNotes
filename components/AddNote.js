@@ -42,10 +42,10 @@ const AddNote = () => {
         setDescription("");
         fetchNotes();
       } else {
-        throw new Error("Failed to create a new note.");
+        return;
       }
     } catch (error) {
-      console.log(error);
+      console.error(`Error posting data, ${error}`);
     }
   };
 

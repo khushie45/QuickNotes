@@ -15,17 +15,12 @@ const EditNoteForm = ({ closeModal, note, updateNote }) => {
     }
 
     try {
-      // Create an updatedNote object
       const updatedNote = {
         _id: note._id,
         newTitle: newTitle,
         newDescription: newDescription,
       };
-
-      // Call the updateNote function from the context to update the note
       await updateNote(updatedNote);
-
-      // Close the modal after updating the note
       closeModal();
     } catch (error) {
       console.error("Error updating note:", error);

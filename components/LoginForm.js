@@ -24,19 +24,20 @@ const LoginForm = () => {
         redirect: false,
       });
 
-      if (res.error) {
+      if (res.ok) {
+        router.replace("dashboard");
+        await fetchNotes();
+        return;
+      } else {
         setError("Invalid Credentials");
         return;
       }
-
-      router.replace("dashboard");
-      await fetchNotes();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
-  const handleGoogleSignIn = async(e) => {
+  const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     signIn("google");
     router.replace("dashboard");
@@ -95,7 +96,8 @@ const LoginForm = () => {
           )}
 
           <Link className="text-sm mt-3 text-right" href={"/register"}>
-            Don&apos;t have an account? <span className="underline">Register</span>
+            Don&apos;t have an account?{" "}
+            <span className="underline">Register</span>
           </Link>
         </form>
       </div>

@@ -37,7 +37,7 @@ const RegisterForm = () => {
         return;
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
 
     try {
@@ -58,10 +58,10 @@ const RegisterForm = () => {
         form.reset();
         router.push("/");
       } else {
-        console.log("User registration failed.");
+        return;
       }
     } catch (error) {
-      console.log("Error during registration", error);
+      console.error("Error during registration", error);
     }
   };
 

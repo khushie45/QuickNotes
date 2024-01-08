@@ -7,7 +7,10 @@ export const POST = async (req) => {
     const user = await User.findOne({ email }).select("_id");
     return NextResponse.json({ user });
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ message: error });
+    console.error(error);
+    return NextResponse.json(
+      { message: "An error occured in checking if a user exists or not." },
+      { status: 500 }
+    );
   }
 };

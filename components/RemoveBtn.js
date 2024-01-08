@@ -15,6 +15,8 @@ const RemoveBtn = ({ id }) => {
 
       if (res.ok) {
         fetchNotes()
+      } else {
+        console.error("Error deleting the note.")
       }
     }
   };
